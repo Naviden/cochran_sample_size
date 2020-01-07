@@ -1,5 +1,4 @@
 from scipy.stats import norm
-from scipy import stats
 
 #https://shodhganga.inflibnet.ac.in/bitstream/10603/23539/7/07_chapter%202.pdf
 
