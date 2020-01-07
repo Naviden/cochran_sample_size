@@ -1,15 +1,18 @@
 from scipy.stats import norm
+from scipy import stats
+
 
 def cochran(confidence_level, margin_of_error, population_size=None, round=True, p=0.5):
     """Calculate sample size based on Cochran (1977) method """
-    Z = norm.ppf(confidence_level)
-    n0 = ((Z ** 2) * p * (1-p)) / margin_of_error ** 2
+    Z = norm.ppf(1 - (1 - confidence_level) / 2) # two-tailed
+    print(Z)
+    n0 = ((Z ** 2) * p * (1-p)) / (margin_of_error ** 2)
     if population_size is None:
         if round:
             n0 = int(n0)
         return n0
     else:
-        n = n0 / (1 + (n0 -1) / population_size)
+        n = n0 / (1 + (n0  / population_size))
         if round:
             n = int(n)
         return n
@@ -23,6 +26,6 @@ def yamane(margin_of_error, population_size, round=True):
         n = int(n)
     return n
 
-print(cochran(0.95, 0.05))
+print(cochran(0.95, 0.05, 60_000_000))
 print(yamane(0.05, 60_000_000))
 
