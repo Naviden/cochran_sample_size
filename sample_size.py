@@ -1,6 +1,8 @@
 from scipy.stats import norm
 from scipy import stats
 
+#https://shodhganga.inflibnet.ac.in/bitstream/10603/23539/7/07_chapter%202.pdf
+
 
 def cochran(confidence_level, margin_of_error, population_size=None, round=True, p=0.5):
     """Calculate sample size based on Cochran (1977) method """
@@ -12,7 +14,7 @@ def cochran(confidence_level, margin_of_error, population_size=None, round=True,
             n0 = int(n0)
         return n0
     else:
-        n = n0 / (1 + (n0  / population_size))
+        n = n0 / (1 + ((n0 - 1)  / population_size))
         if round:
             n = int(n)
         return n
