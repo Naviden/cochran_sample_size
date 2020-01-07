@@ -1,6 +1,6 @@
 from scipy.stats import norm
 
-def sample_size(confidence_level, precision, population_size=None, round=True, p=0.5):
+def cochran(confidence_level, precision, population_size=None, round=True, p=0.5):
     Z = norm.ppf(confidence_level)
     print(Z)
     n0 = ((Z ** 2) * p * (1-p)) / precision ** 2
