@@ -14,5 +14,11 @@ def cochran(confidence_level, precision, population_size=None, round=True, p=0.5
             n = int(n)
         return n
 
+def yamane(precision, population_size):
+    
+    """Calculate sample size based on Yamane (1967) method
+    Assumption : 95% confidence level and p = 0.5"""
+    return population_size / (1 + (population_size * (precision ** 2)))
+
 print(sample_size(0.95, 0.05))
 
